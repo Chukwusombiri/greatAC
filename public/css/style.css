@@ -1,0 +1,168 @@
+    @font-face {
+        font-family: 'Futura PT Book';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicBook.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Light';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicLight.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Medium';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicMedium.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Demi';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicDemi.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Heavy';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicHeavy.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Bold';
+        font-style: normal;
+        font-weight: normal;
+        src: local('Futura PT Bold'), url('../fonts/FuturaCyrillicBold.woff') format('woff');
+    }
+
+
+    @font-face {
+        font-family: 'Futura PT Extra Bold';
+        font-style: normal;
+        font-weight: normal;
+        src: url('../fonts/FuturaCyrillicExtraBold.woff') format('woff');
+    }
+
+    .futura-light {
+        font-family: 'Futura PT Light', system-ui !important;
+    }
+
+    .futura-book {
+        font-family: 'Futura PT Book', system-ui !important;
+    }
+
+    .futura-medium {
+        font-family: 'Futura PT Medium', system-ui !important;
+    }
+
+    .futura-bold {
+        font-family: 'Futura PT Bold', system-ui !important;
+    }
+
+    .sedan-regular {
+        font-family: "Hedvig Letters Serif", serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
+    }
+
+    .sedan-regular-bold {
+        font-family: "Hedvig Letters Serif", serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+    }
+
+    .expletus-sans {
+        font-family: "Expletus Sans", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+    }
+
+    .line-height-1 {
+        line-height: 1;
+    }
+
+    #menu {
+        transition: all 0.3s ease;
+        /* Ensure the transition is applied to all properties but position */
+    }
+
+    .fixed-menu {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s ease;
+    }
+
+    .show {
+        position: fixed;
+        bottom: 80%;
+        left: 1%;
+        z-index: 999;
+        width: 80%;
+        max-width: 300px;
+        padding: 10px 10px;
+        font-family: "Hedvig Letters Serif", serif;
+        font-weight: normal;
+        background: #372aaf;
+        color: azure;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Media query for smaller screens */
+    @media (max-width: 768px) {
+        .show {
+            bottom: auto;
+            top: 7%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            padding: 10px;
+        }
+    }
+
+    @keyframes revolver {
+        0% {
+            transform: rotateY(0deg);
+        }
+
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    .animate-revolver {
+        animation: revolver 1s ease-in-out;
+    }
+
+    @keyframes lineGrow {
+        from {
+            width: 0;
+            opacity: 0.3;
+        }
+        to {
+            width: 80px;
+            opacity: 1;
+        }
+    }
+
+    .animate-lineGrow {
+        animation: lineGrow 1s ease-out forwards;
+        animation-delay: 0.3s;
+    }

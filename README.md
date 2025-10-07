@@ -1,0 +1,1 @@
+An online platform for investors. SQUFlex has put together a team of experts and pro traders ensuring steady profitable market returns. If you wish to start making gains in the digital market join SQUFlex today.
