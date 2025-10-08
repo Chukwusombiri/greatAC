@@ -4,7 +4,7 @@
             <x-authentication-card-logo />
         </x-slot>
 
-        <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
+        <div class="mb-4 text-sm text-gray-400 dark:text-gray-400">
             {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
         </div>
 
@@ -19,8 +19,8 @@
         <form method="POST" action="{{ route('admin.password.send.email') }}">
             @csrf
             <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
+                <label for="email" class="text-gray-400 text-sm">Email </label>
+                <x-input id="email" class="block mt-1 w-full bg-transparent text-gray-200" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

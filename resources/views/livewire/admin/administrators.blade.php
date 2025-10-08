@@ -124,74 +124,78 @@
                             @endif
                             @if (count($admins) > 0)
                                 @foreach ($admins as $admin)
-                                    <tr>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <div class="flex px-2 py-1">
-                                                <div>
-                                                    @if ($admin->profile_photo_path !== null)
-                                                        <img src="{{ asset('storage/' . $admin->profile_photo_path) }}"
-                                                            class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-12 w-12 rounded-xl"
-                                                            alt="user1" />
-                                                    @else
-                                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                                            class="inline-flex items-center justify-center mr-4 h-12 w-12"
-                                                            viewBox="0 0 24 24" fill="none" stroke="#000000"
-                                                            stroke-linecap="round" stroke-linejoin="round"
-                                                            width="24" height="24" stroke-width="2">
-                                                            <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
-                                                            <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
-                                                            <path
-                                                                d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855">
-                                                            </path>
-                                                        </svg>
-                                                    @endif
+                                    @if ($admin->id !== auth('admin')->user()->id)
+                                        <tr>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <div class="flex px-2 py-1">
+                                                    <div>
+                                                        @if ($admin->profile_photo_path !== null)
+                                                            <img src="{{ asset('storage/' . $admin->profile_photo_path) }}"
+                                                                class="inline-flex items-center justify-center mr-4 text-sm text-white transition-all duration-200 ease-in-out h-12 w-12 rounded-xl"
+                                                                alt="user1" />
+                                                        @else
+                                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                                class="inline-flex items-center justify-center mr-4 h-12 w-12"
+                                                                viewBox="0 0 24 24" fill="none" stroke="#000000"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                width="24" height="24" stroke-width="2">
+                                                                <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0">
+                                                                </path>
+                                                                <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0">
+                                                                </path>
+                                                                <path
+                                                                    d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855">
+                                                                </path>
+                                                            </svg>
+                                                        @endif
+                                                    </div>
+                                                    <div class="flex flex-col justify-center">
+                                                        <h6 class="mb-0 text-sm leading-normal">{{ $admin->name }}
+                                                        </h6>
+                                                    </div>
                                                 </div>
-                                                <div class="flex flex-col justify-center">
-                                                    <h6 class="mb-0 text-sm leading-normal">{{ $admin->name }}
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <p class="mb-0 text-xs font-semibold leading-tight">
-                                                {{ $admin->email }}</p>
-                                        </td>
-                                        <td
-                                            class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="bg-gradient-to-tl from-slate-600 to-slate-300 px-4 text-xs rounded-1.8 py-2 rounded-xl inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ str_replace('_', ' ', $admin->admin_role) }}</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            @if ($admin->isSuspended)
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <p class="mb-0 text-xs font-semibold leading-tight">
+                                                    {{ $admin->email }}</p>
+                                            </td>
+                                            <td
+                                                class="p-2 text-sm leading-normal text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
                                                 <span
-                                                    class="text-xs font-semibold leading-tight text-rose-600">Suspended</span>
-                                            @else
-                                                <span class="text-xs font-semibold leading-tight text-sky-600">Not
-                                                    suspended</span>
-                                            @endif
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="text-xs font-semibold leading-tight text-slate-400">{{ date('M d, Y | h:i', strtotime($admin->created_at)) }}</span>
-                                        </td>
-                                        <td
-                                            class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <span
-                                                class="text-xs font-semibold leading-tight text-slate-400">{{ $admin->updated_at->diffForHumans() }}</span>
-                                        </td>
-                                        <td
-                                            class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
-                                            <a href="{{ route('admin.administrator.edit', [$admin->id]) }}"
-                                                class="text-xs font-semibold leading-tight text-sky-500 mr-2 hover:underline">
-                                                Edit </a>
-                                            <button wire:click="delete('{{ $admin->id }}')"
-                                                class="hover:underline text-xs text-rose-600 font-semibold leading-tight">Delete</button>
-                                        </td>
-                                    </tr>
+                                                    class="bg-gradient-to-tl from-slate-600 to-slate-300 px-4 text-xs rounded-1.8 py-2 rounded-xl inline-block whitespace-nowrap text-center align-baseline font-bold uppercase leading-none text-white">{{ str_replace('_', ' ', $admin->admin_role) }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                @if ($admin->isSuspended)
+                                                    <span
+                                                        class="text-xs font-semibold leading-tight text-rose-600">Suspended</span>
+                                                @else
+                                                    <span class="text-xs font-semibold leading-tight text-sky-600">Not
+                                                        suspended</span>
+                                                @endif
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ date('M d, Y | h:i', strtotime($admin->created_at)) }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 text-center align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <span
+                                                    class="text-xs font-semibold leading-tight text-slate-400">{{ $admin->updated_at->diffForHumans() }}</span>
+                                            </td>
+                                            <td
+                                                class="p-2 align-middle bg-transparent border-b whitespace-nowrap shadow-transparent">
+                                                <a href="{{ route('admin.administrator.edit', [$admin->id]) }}"
+                                                    class="text-xs font-semibold leading-tight text-sky-500 mr-2 hover:underline">
+                                                    Edit </a>
+                                                <button wire:click="delete('{{ $admin->id }}')"
+                                                    class="hover:underline text-xs text-rose-600 font-semibold leading-tight">Delete</button>
+                                            </td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                             @endif
                         </tbody>

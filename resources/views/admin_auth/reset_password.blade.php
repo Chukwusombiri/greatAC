@@ -11,19 +11,19 @@
 
             <input type="hidden" name="token" value="{{ $token }}">
 
-            <div class="block">
-                <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $email)" required autofocus autocomplete="username" />
+            <div class="block">               
+                <label for="email" class="text-gray-400 text-sm">Email </label>
+                <x-input id="email" class="block mt-1 w-full bg-transparent text-gray-200" type="email" name="email" :value="old('email', $email)" required autofocus autocomplete="username" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password" value="{{ __('Password') }}" />
-                <x-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <div class="mt-4">                
+                <label for="password" class="text-gray-400 text-sm">Password </label>
+                <x-input id="password" class="block mt-1 w-full bg-transparent text-gray-200" type="password" name="password" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="password_confirmation" value="{{ __('Confirm Password') }}" />
-                <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+            <div class="mt-4">                
+                <label for="password_confirmation" class="text-gray-400 text-sm">Confirm Password </label>
+                <x-input id="password_confirmation" class="block mt-1 w-full bg-transparent text-gray-200" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
             <div class="flex items-center justify-end mt-4">

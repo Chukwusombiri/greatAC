@@ -27,9 +27,10 @@ class Administrators extends Component
     
     public function render()
     {
+        $loggedInAdmin = Admin::find(auth('admin')->user()->id);
         $admins = Admin::where('name','like','%'.$this->search.'%')
                     ->orWhere('email','like','%'.$this->search.'%')
-                    ->whereNotIn('id',[auth('admin')->user()->id])
+                    ->whereNotIn('id',[$loggedInAdmin->id])
                     ->orderByDesc('created_at')
                     ->paginate(10);
         return view('livewire.admin.administrators',[
