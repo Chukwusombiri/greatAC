@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Log;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
@@ -75,46 +76,60 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new UserVerifyEmail);
+        try {
+            $this->notify(new UserVerifyEmail);
+        } catch (\Throwable $th) {           
+            Log::error('Failed to send verification email.', [
+                'user_id' => $this->id,
+                'email' => $this->email,
+                'error' => $th->getMessage(),
+            ]);
+        }
     }
 
     protected static function boot()
     {
         parent::boot();
-    
+
         static::creating(function ($user) {
             $rand = \Illuminate\Support\Str::ulid()->toBase32();
             $user->referralId = substr(config('app.name'), 0, 2) . $rand;
         });
     }
-    
 
-    public function deposits(){
+
+    public function deposits()
+    {
         return $this->hasMany(\App\Models\Deposit::class);
     }
 
-    public function withdrawals(){
+    public function withdrawals()
+    {
         return $this->hasMany(\App\Models\Withdrawal::class);
     }
 
-    public function userwallets(){
+    public function userwallets()
+    {
         return $this->hasMany(\App\Models\UserWallet::class);
     }
 
-    public function activePlan(){
-        return $this->belongsTo(\App\Models\Plan::class,'plan_id');
+    public function activePlan()
+    {
+        return $this->belongsTo(\App\Models\Plan::class, 'plan_id');
     }
 
-    public function prevPlan(){
-        return $this->belongsTo(\App\Models\Plan::class,'prev_plan_id');
+    public function prevPlan()
+    {
+        return $this->belongsTo(\App\Models\Plan::class, 'prev_plan_id');
     }
-    
+
     public function upline()
     {
         return $this->belongsTo(User::class, 'upline_id');
     }
 
-    public function downlines(){
-        return $this->hasMany(\App\Models\Referral::class,'user_id');
+    public function downlines()
+    {
+        return $this->hasMany(\App\Models\Referral::class, 'user_id');
     }
 }

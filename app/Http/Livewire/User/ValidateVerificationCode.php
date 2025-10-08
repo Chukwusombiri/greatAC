@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\User;
 
 use App\Models\User;
+use App\Notifications\UserVerifyEmail;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Validation\ValidationException;
@@ -11,7 +12,7 @@ use Livewire\Component;
 class ValidateVerificationCode extends Component
 {
     public $code;
-    
+
     public function verify()
     {
         $this->validate([
@@ -37,12 +38,17 @@ class ValidateVerificationCode extends Component
         return redirect()->route('user.dashboard');
     }
 
-    public function resend(){
+    public function resend()
+    {
         $user = User::find(Auth::id());
-        $user->sendEmailVerificationNotification();
-        $this->reset();
-        session()->flash('status','verification-code-sent');
-        return;
+        try {
+            $user->notify(new UserVerifyEmail);
+            $this->reset();
+            session()->flash('status', 'verification-code-sent');
+            return;
+        } catch (\Throwable $th) {
+             session()->flash('status', 'verification-code-send-failed');
+        }
     }
 
 

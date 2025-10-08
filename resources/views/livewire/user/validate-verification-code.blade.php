@@ -13,6 +13,12 @@
         </div>
     @endif
 
+     @if (session('status') == 'verification-code-send-failed')
+        <div class="mb-4 font-medium text-sm text-red-500">
+            {{ __('Oops! We couldn\'t resend verification code. Try again later or contact us about this problem.') }}
+        </div>
+    @endif
+
     @if ($errors->has('code'))
         <div class="text-sm text-red-500 mb-4">{{ $errors->first('code') }}</div>
     @endif
