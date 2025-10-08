@@ -18,7 +18,7 @@ return [
     'name' => env('APP_NAME', 'Laravel'),
 
     'company' => [
-        'address'=>'15 Thames St, Walton-on-Thames KT12 2PX, UK',          
+        'address'=>'88 Denmark Hill, London SE5 8RX, UK',          
     ],
 
     'mapbox' => env('MAPBOX_ACCESS_TOKEN',''),
@@ -207,8 +207,8 @@ return [
     ],
 
     'socials' => [
-        'whatsapp' => env('COMPANY_WHATSAPP_NUMBER', '+1 (732) 631-9057'),
-        'whatsapp_link' => 'https://wa.me/'.env('COMPANY_WHATSAPP_NUMBER', '+1 (732) 631-9057').'?text=' . urlencode('Hello! I am contacting you from ' . env('APP_NAME') . ' Platform'),
+        'whatsapp' => env('COMPANY_WHATSAPP_NUMBER', '+447436099215'),
+        'whatsapp_link' => 'https://wa.me/'.env('COMPANY_WHATSAPP_NUMBER', '+447436099215').'?text=' . urlencode('Hello! I am contacting you from ' . env('APP_NAME') . ' Platform'),
         'instagram'=>env('COMPANY_INSTAGRAM'),
         'linkedin'=>env('COMPANY_LINKEDIN'),
         'twitter'=>env('COMPANY_TWITTER'),      

@@ -222,7 +222,7 @@
                 <div data-aos="fade-right"
                     class="order-1 md:order-2 rounded-2xl overflow-hidden shadow-md border border-gray-100">
                     <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2489.8513942303653!2d-0.42467892473630353!3d51.3874092194637!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48767500084aa107%3A0x63964344c9bb4024!2s15%20Thames%20St%2C%20Walton-on-Thames%20KT12%202PX%2C%20UK!5e0!3m2!1sen!2sng!4v1754399260753!5m2!1sen!2sng"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2485.260647933237!2d-0.09583382472936068!3d51.47172981331027!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487603800ce5642d%3A0xb8da4b75f7b6b91c!2s88%20Denmark%20Hill%2C%20London%20SE5%208RX%2C%20UK!5e0!3m2!1sen!2sng!4v1759928628300!5m2!1sen!2sng"
                         width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
