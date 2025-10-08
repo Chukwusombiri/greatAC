@@ -66,7 +66,7 @@ class CreateWithdrawal extends Component
             ]);
             return redirect()->route('user.withdrawal.complete');
         } catch (\Throwable $th) {
-            throw $th;
+            //throw $th;
             Log::error($th->getMessage());
             session()->flash('error','Something went wrong, try again later.');
         }
